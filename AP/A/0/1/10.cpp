@@ -14,7 +14,7 @@ int main()
             cin >> start >> end;
             
             period = end - start;
-            if (maxTime < (sumOfTime += period) || maxPeriod < period || period < 0)
+            if (maxTime < (sumOfTime += period) || maxPeriod < period /*|| period < 0*/)
             {
                 flag[i] = 0;
             }
