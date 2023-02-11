@@ -1,0 +1,2 @@
+We should initialize an array with 100 elements and each time we encounter a number that is regularly between 0 and 99, we add 1 to the elements with this number. For instance, if we face number a, we increase element number[a] by one.
+At last, we check the array.
