@@ -13,6 +13,8 @@ using namespace std;
 #define DATE_DELIMITER '/'
 #define MAX_LEN 20
 
+#define EQUAL 0
+
 typedef struct note
 {
     vector<int> date{DAY, MONTH, YEAR};
@@ -40,6 +42,8 @@ note check_date(vector<note> notepad, vector<int> time);
 note check_longest_note(vector<note> notepad);
 
 note check_best_note(vector<note> notepad);
+
+void check_max_value(note &main_note, note temp_note, int &max_value, int temp_value);
 
 int compare_date(vector<int> date1, vector<int> date2);
 
@@ -131,6 +135,7 @@ void show_the_best_day(vector<note> notepad, note &best_note)
     print_date(best_note.date);
     print_note(best_note);
 }
+
 void date_initialize(vector<int> &time)
 {
     vector<int> dates(3, 0);
@@ -190,18 +195,7 @@ note check_longest_note(vector<note> notepad)
 
     for (note temp_diary : notepad)
     {
-        if (temp_diary.diary_length > max_size)
-        {
-            max_size = temp_diary.diary_length;
-            longest_diary = temp_diary;
-        }
-        else if (temp_diary.diary_length == max_size)
-        {
-            if (compare_date(temp_diary.date, longest_diary.date) > 0)
-            {
-                longest_diary = temp_diary;
-            }
-        }
+        check_max_value(longest_diary, temp_diary, max_size, temp_diary.diary_length);
     }
     return longest_diary;
 }
@@ -213,20 +207,25 @@ note check_best_note(vector<note> notepad)
 
     for (note temp_diary : notepad)
     {
-        if (temp_diary.positive_word_count > max_positive_words)
-        {
-            max_positive_words = temp_diary.positive_word_count;
-            best_diary = temp_diary;
-        }
-        else if (temp_diary.positive_word_count == max_positive_words)
-        {
-            if (compare_date(temp_diary.date, best_diary.date) > 0)
-            {
-                best_diary = temp_diary;
-            }
-        }
+        check_max_value(best_diary, temp_diary, max_positive_words, temp_diary.positive_word_count);
     }
     return best_diary;
+}
+
+void check_max_value(note &main_note, note temp_note, int &max_value, int temp_value)
+{
+    if (temp_value > max_value)
+    {
+        max_value = temp_value;
+        main_note = temp_note;
+    }
+    else if (temp_value == max_value)
+    {
+        if (compare_date(temp_note.date, main_note.date) > 0)
+        {
+            main_note = temp_note;
+        }
+    }
 }
 
 void print_note(note text)
@@ -272,17 +271,14 @@ int compare_date(vector<int> date1, vector<int> date2)
 {
     int age_gap;
 
-    if ((age_gap = date2[2] - date1[2]) != 0)
-    {
-        return age_gap;
-    }
-    else if ((age_gap = date2[1] - date1[1]) != 0)
-    {
-        return age_gap;
-    }
+    if ((age_gap = date2[YEAR] - date1[YEAR]) != EQUAL) {}
+
+    else if ((age_gap = date2[MONTH] - date1[MONTH]) != EQUAL) {}
+    
     else
     {
-        return age_gap = date2[0] - date1[0];
+        age_gap = date2[DAY] - date1[DAY];
     }
+    return age_gap;
 }
 //
