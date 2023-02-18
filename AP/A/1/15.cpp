@@ -23,13 +23,13 @@ typedef struct note
 
 vector<string> reading_file_positive_words(string file_name);
 
-void start_day(vector<note>& notepad);
+void start_day(vector<note> &notepad);
 
-void show_day(vector<note> notepad, note& searched_note, vector <int>& searched_day);
+void show_day(vector<note> notepad, note &searched_note, vector<int> &searched_day);
 
-void show_the_longest_day(vector<note> notepad, note& longest_note);
+void show_the_longest_day(vector<note> notepad, note &longest_note);
 
-void show_the_best_day(vector<note> notepad, note& best_note);
+void show_the_best_day(vector<note> notepad, note &best_note);
 
 bool is_positive(string input_word, vector<string> positive_words);
 
@@ -44,6 +44,8 @@ note check_best_note(vector<note> notepad);
 int compare_date(vector<int> date1, vector<int> date2);
 
 void print_note(note text);
+
+void print_date(vector<int> date);
 
 void add_note(string input, vector<string> positve_words, vector<note> &notepad);
 
@@ -60,32 +62,23 @@ int main(void)
         if (input == "start_day")
         {
             start_day(notepad);
-            // notepad.resize(notepad.size() + 1);
-            // date_initialize(notepad.back().date);
         }
         else if (input == "show_day")
         {
             show_day(notepad, check_note, temp_day);
-            // date_initialize(temp_day);
-            // check_note = check_date(notepad, temp_day);
-            // cout << check_note.diary;
         }
         else if (input == "show_the_longest_day")
         {
-            // check_note = check_longest_note(notepad);
-            // cout << check_note.date[DAY] << DATE_DELIMITER << check_note.date[MONTH] << DATE_DELIMITER << check_note.date[YEAR] << endl;
-            // print_note(check_note);
             show_the_longest_day(notepad, check_note);
         }
         else if (input == "show_the_best_day")
         {
-            // check_note = check_best_note(notepad);
-            // cout << check_note.date[DAY] << DATE_DELIMITER << check_note.date[MONTH] << DATE_DELIMITER << check_note.date[YEAR] << endl;
-            // print_note(check_note);
             show_the_best_day(notepad, check_note);
         }
         else
+        {
             add_note(input, positive_words, notepad);
+        }
     }
     exit(EXIT_SUCCESS);
 }
@@ -99,45 +92,43 @@ vector<string> reading_file_positive_words(string file_name)
     input.open(file_name);
 
     while (input >> word)
+    {
         positive_words.push_back(word);
+    }
 
     input.close();
     return positive_words;
 }
 
-void start_day(vector<note>& notepad)
+void start_day(vector<note> &notepad)
 {
     notepad.resize(notepad.size() + 1);
+
     date_initialize(notepad.back().date);
 }
 
-void show_day(vector<note> notepad, note& searched_note, vector <int>& searched_day)
+void show_day(vector<note> notepad, note &searched_note, vector<int> &searched_day)
 {
-    // note searched_note;
-    // vector<int> searched_day(3,0);
-
     date_initialize(searched_day);
-    cout << searched_day[0]<< DATE_DELIMITER<< searched_day[1]<< DATE_DELIMITER <<searched_day[2]<<endl;
+
     searched_note = check_date(notepad, searched_day);
 
     cout << searched_note.diary;
 }
 
-void show_the_longest_day(vector<note> notepad, note& longest_note)
+void show_the_longest_day(vector<note> notepad, note &longest_note)
 {
     longest_note = check_longest_note(notepad);
 
-    cout << longest_note.date[DAY] << DATE_DELIMITER << longest_note.date[MONTH] << DATE_DELIMITER << longest_note.date[YEAR] << endl;
-    
+    print_date(longest_note.date);
     print_note(longest_note);
 }
 
-void show_the_best_day(vector<note> notepad, note& best_note)
+void show_the_best_day(vector<note> notepad, note &best_note)
 {
     best_note = check_best_note(notepad);
 
-    cout << best_note.date[DAY] << DATE_DELIMITER << best_note.date[MONTH] << DATE_DELIMITER << best_note.date[YEAR] << endl;
-    
+    print_date(best_note.date);
     print_note(best_note);
 }
 void date_initialize(vector<int> &time)
@@ -173,7 +164,9 @@ bool is_positive(string input_word, vector<string> positive_words)
     for (string word : positive_words)
     {
         if (input_word.compare(word) == 0)
+        {
             return true;
+        }
     }
     return false;
 }
@@ -183,7 +176,9 @@ note check_date(vector<note> notepad, vector<int> time)
     for (note diary : notepad)
     {
         if (diary.date == time)
+        {
             return diary;
+        }
     }
     exit(EXIT_FAILURE);
 }
@@ -203,7 +198,9 @@ note check_longest_note(vector<note> notepad)
         else if (temp_diary.diary_length == max_size)
         {
             if (compare_date(temp_diary.date, longest_diary.date) > 0)
+            {
                 longest_diary = temp_diary;
+            }
         }
     }
     return longest_diary;
@@ -224,7 +221,9 @@ note check_best_note(vector<note> notepad)
         else if (temp_diary.positive_word_count == max_positive_words)
         {
             if (compare_date(temp_diary.date, best_diary.date) > 0)
+            {
                 best_diary = temp_diary;
+            }
         }
     }
     return best_diary;
@@ -233,7 +232,7 @@ note check_best_note(vector<note> notepad)
 void print_note(note text)
 {
     int cnt_letters = 0;
-    vector<char> letters(text.diary.begin(), text.diary.end() - 1); // for the last '\n'
+    vector<char> letters(text.diary.begin(), text.diary.end() - 1);
 
     for (char ch : letters)
     {
@@ -250,6 +249,11 @@ void print_note(note text)
     }
     cout << endl;
     return;
+}
+
+void print_date(vector<int> date)
+{
+    cout << date[DAY] << DATE_DELIMITER << date[MONTH] << DATE_DELIMITER << date[YEAR] << endl;
 }
 
 void add_note(string input, vector<string> positive_words, vector<note> &notepad)
@@ -269,12 +273,16 @@ int compare_date(vector<int> date1, vector<int> date2)
     int age_gap;
 
     if ((age_gap = date2[2] - date1[2]) != 0)
+    {
         return age_gap;
-
+    }
     else if ((age_gap = date2[1] - date1[1]) != 0)
+    {
         return age_gap;
-
+    }
     else
+    {
         return age_gap = date2[0] - date1[0];
+    }
 }
 //
