@@ -11,6 +11,9 @@ using namespace std;
 #define YEAR 2
 
 #define DATE_DELIMITER '/'
+#define LETTER_SIZE 1
+#define LAST_BACKSLASH_N 1
+
 #define MAX_LEN 20
 
 #define EQUAL 0
@@ -47,7 +50,9 @@ note check_best_note(vector<note> notepad);
 
 void check_max_value(note &main_note, note temp_note, int &max_value, int temp_value);
 
-void print_note(note text);
+void print_brief_note(note text);
+
+void print_date(vector<int> date);
 
 void add_note(string input, vector<string> positve_words, vector<note> &notepad);
 
@@ -122,27 +127,27 @@ void show_the_longest_day(vector<note> notepad, note &longest_note)
 {
     longest_note = check_longest_note(notepad);
 
-    print_note(longest_note);
+    print_brief_note(longest_note);
 }
 
 void show_the_best_day(vector<note> notepad, note &best_note)
 {
     best_note = check_best_note(notepad);
 
-    print_note(best_note);
+    print_brief_note(best_note);
 }
 
 void date_initialize(vector<int> &time)
 {
     vector<int> dates(3, 0);
     int index = 0;
-    char letter;
+    char ch;
 
     getchar();
 
-    while (cin.get(letter))
+    while (cin.get(ch))
     {
-        switch (letter)
+        switch (ch)
         {
         case DATE_DELIMITER:
             time.at(index) = dates.at(index);
@@ -152,8 +157,9 @@ void date_initialize(vector<int> &time)
         case ' ':
             time.at(index) = dates.at(index);
             return;
-        default: 
-            dates.at(index) = dates.at(index) * 10 + (letter - '0');
+        default:
+            // convert character to last digit
+            dates.at(index) = dates.at(index) * 10 + (ch - '0');
             break;
         }
     }
@@ -164,7 +170,7 @@ bool is_positive(string input_word, vector<string> positive_words)
 {
     for (string word : positive_words)
     {
-        if (input_word.compare(word) == 0)
+        if (input_word.compare(word) == EQUAL)
         {
             return true;
         }
@@ -224,14 +230,14 @@ void check_max_value(note &main_note, note temp_note, int &max_value, int temp_v
     }
 }
 
-void print_note(note text)
+void print_brief_note(note text)
 {
-    cout << text.date[DAY] << DATE_DELIMITER << 
-            text.date[MONTH] << DATE_DELIMITER << 
-            text.date[YEAR] << endl;
-
     int cnt_letters = 0;
-    vector<char> letters(text.diary.begin(), text.diary.end() - 1);
+
+    print_date(text.date);
+
+    // last '\n' is used to enter next command and isn't included in the note
+    vector<char> letters(text.diary.begin(), text.diary.end() - LAST_BACKSLASH_N);
 
     for (char ch : letters)
     {
@@ -250,16 +256,21 @@ void print_note(note text)
     return;
 }
 
+void print_date(vector<int> date)
+{
+    cout << date[DAY] << DATE_DELIMITER << date[MONTH] << DATE_DELIMITER << date[YEAR] << endl;
+}
+
 void add_note(string input, vector<string> positive_words, vector<note> &notepad)
 {
+    notepad.back().positive_word_count += is_positive(input, positive_words);
+
     char letter = getchar();
 
     notepad.back().diary += input;
     notepad.back().diary += letter;
 
-    notepad.back().diary_length += input.size() + 1;
-
-    notepad.back().positive_word_count += is_positive(input, positive_words);
+    notepad.back().diary_length += input.size() + LETTER_SIZE;
 }
 
 int older_date(vector<int> date1, vector<int> date2)
