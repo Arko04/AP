@@ -4,14 +4,12 @@
 
 using namespace std;
 
-#define EMPTY 'O'
-#define FULL 'N'
-#define NOT_POSSIBLE 'X'
-
 const int ROW_NO = 7;
 const int COL_NO = 7;
 
-void print_board(vector<vector<char>> &board);
+typedef vector<vector<char>> Board;
+
+void print_board(Board &board);
 
 typedef struct vec
 {
@@ -28,7 +26,7 @@ typedef struct moves
     vec coordinate;
 } moves;
 
-const vector<vector<char>> END_POSITION =
+const Board END_POSITION =
     {{'X', 'X', 'O', 'O', 'O', 'X', 'X'},
      {'X', 'X', 'O', 'O', 'O', 'X', 'X'},
      {'O', 'O', 'O', 'O', 'O', 'O', 'O'},
@@ -44,7 +42,7 @@ const vec DOWN = {1, 0};
 
 const vec MOVES[POSSIBLE_MOVES] = {DOWN, RIGHT, UP, LEFT};
 
-int number_of_N(const vector<vector<char>> &board)
+int number_of_N(const Board &board)
 {
     int n_counter = 0;
     for (int i = 0; i < ROW_NO; i++)
@@ -71,11 +69,11 @@ bool is_not_possible(int row_no, int col_no)
 
     return false;
 }
-bool find_way(vector<vector<char>> &board, vector<moves> &steps)
+bool find_way(Board &board, vector<moves> &steps)
 {
     if (board == END_POSITION)
         return true;
-    if (number_of_N(board)== 1)
+    if (number_of_N(board) == 1)
         return false;
     int new_row, new_col;
     for (int i = 0; i < ROW_NO; i++)
@@ -115,7 +113,7 @@ bool find_way(vector<vector<char>> &board, vector<moves> &steps)
 
 int main()
 {
-    vector<vector<char>> board(ROW_NO, vector<char>(COL_NO));
+    Board board(ROW_NO, vector<char>(COL_NO));
 
     for (int i = 0; i < ROW_NO; i++)
     {

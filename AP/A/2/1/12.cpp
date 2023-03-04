@@ -15,41 +15,52 @@ int max(int num1, int num2)
     return (num1 > num2) ? num1 : num2;
 }
 
-void traverse(vector<int> numbers, int num1 = 0, int index = 0, int condition = MAX)
+void traverse(vector<int>& numbers, int prev_num = 0, int cur_index = 0, int condition = MAX)
 {
-    cout << num1 << ' ';
-    if (numbers.size() - 1 < index)
+    if (numbers.size() - 1 < cur_index)
         return;
-    int num2 = numbers.at(index);
-    if ((num1 == 0 && num2 == 0))
+        
+    int cur_num = numbers.at(cur_index);
+    cout << cur_num << ' ';
+
+    if ((prev_num == 0 && cur_num == 0))
         return;
+
     else
     {
         if (condition == MAX)
         {
-            index += max(num1, num2);
+            cur_index += max(prev_num, cur_num);
             condition = MIN;
         }
         else
         {
-            index += min(num1, num2);
+            cur_index += min(prev_num, cur_num);
             condition = MAX;
         }
-        num1 = num2;
-        traverse(numbers, num1, index, condition);
+        traverse(numbers, cur_num, cur_index, condition);
     }
 }
-int main()
+
+vector<int> input_numbers()
 {
     int number_count, num;
     cin >> number_count;
+
     vector<int> numbers(number_count);
+
     for (int i = 0; i < number_count; i++)
     {
         cin >> num;
         numbers.at(i) = num;
     }
+    return numbers;
+}
+
+int main()
+{
+    vector<int> numbers = input_numbers();
     traverse(numbers);
     cout << endl;
-    return 0;
+    exit(EXIT_SUCCESS);
 }

@@ -17,12 +17,15 @@ int max(int num1, int num2)
 
 void traverse(vector<int> numbers, int num1 = 0, int index = 0, int condition = MAX)
 {
-    cout << num1 << ' ';
     if (numbers.size() - 1 < index)
         return;
+
     int num2 = numbers.at(index);
+    cout << num2 << ' ';
+    
     if ((num1 == 0 && num2 == 0))
         return;
+
     else
     {
         if (condition == MAX)
@@ -35,8 +38,7 @@ void traverse(vector<int> numbers, int num1 = 0, int index = 0, int condition = 
             index += min(num1, num2);
             condition = MAX;
         }
-        num1 = num2;
-        traverse(numbers, num1, index, condition);
+        traverse(numbers, num2, index, condition);
     }
 }
 int main()
