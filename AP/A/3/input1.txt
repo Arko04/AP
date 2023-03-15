@@ -1,0 +1,10 @@
+4
+Ali 2 Tuesday Monday 2 Lit BP
+kiana 4 Wednesday Monday Sunday Saturday 2 BP Math
+kourosh 3 Tuesday Monday Sunday 2 Lit Math
+mozi 3 Wednesday Tuesday Monday 2 AP Math
+4
+Math Monday Tuesday 01:40 15:43
+AP Tuesday Monday 01:50 19:22
+BP Monday Saturday 01:41 16:42
+Lit Wednesday Tuesday 17:08 18:09
