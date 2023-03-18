@@ -61,31 +61,18 @@ struct Class
 };
 typedef Class Plan[CLASS_CNT][DAY_CNT][PERIOD_CNT];
 
-void print_plan(Plan plan)
-{
-    for (int clss = 0; clss < CLASS_CNT; clss++)
-    {
-        for (int day = 0; day < DAY_CNT; day++)
-        {
-            for (int period = 0; period < PERIOD_CNT; period++)
-                cout << plan[clss][day][period].is_full << ' ';
-            cout << endl;
-        }
-        cout << endl;
-    }
-    cout << "_________" << endl;
-}
-
 vector<string> input()
 {
     string input;
     vector<string> inputList;
     while (getline(cin, input))
-        {   if (input!="")
-            inputList.push_back(input);}
+    {
+        if (!input.empty())
+            inputList.push_back(input);
+    }
     return inputList;
 }
-void valid_day(Teacher &teacher, string tutor_day)
+void validate_day(Teacher &teacher, string tutor_day)
 {
     for (int period = 0; period < PERIOD_CNT; period++)
         teacher.have_time[DAY.at(tutor_day)][period] = true;
@@ -108,7 +95,7 @@ Teacher initialize_teacher(string input_line)
     for (int j = 0; j < teacher.free_days_cnt; j++)
     {
         input >> tutor_day;
-        valid_day(teacher, tutor_day);
+        validate_day(teacher, tutor_day);
     }
     input >> course_cnt;
     for (int j = 0; j < course_cnt; j++)
@@ -171,12 +158,9 @@ bool is_teacher_valid(Course course, Teacher teacher, Index index)
             crs = teacher_course;
             break;
         }
-    if (is_crs_found == false)
-        return false;
-    if (crs.is_teached[index.cls] == false)
-        return false;
-
-    if (has_teacher_time(teacher.have_time, course.day, index.period) == false)
+    if (is_crs_found == false ||
+        crs.is_teached[index.cls] == false ||
+        has_teacher_time(teacher.have_time, course.day, index.period) == false)
         return false;
 
     return true;
@@ -189,7 +173,7 @@ Teacher choose_teacher(Course course, vector<Teacher> teacherList, Index index)
         {
             if (cur_teacher.free_days_cnt < teacher.free_days_cnt)
                 teacher = cur_teacher;
-            if (cur_teacher.free_days_cnt == teacher.free_days_cnt)
+            else if (cur_teacher.free_days_cnt == teacher.free_days_cnt)
                 if (cur_teacher.name < teacher.name || teacher.name == EMPTY)
                     teacher = cur_teacher;
         }
@@ -213,17 +197,13 @@ bool is_course_free(Course &course, int cls)
 {
     return (course.is_chosen[cls] == true) ? false : true;
 }
-bool is_valid_in_this_period(Plan &plan, Course course, Index index)
+bool is_course_valid(Plan &plan, Course course, Index index)
 {
-    if (is_day_match(course.day, index.day))
-        if (is_time_match(course.time, index.period))
-            if (is_plan_not_full(plan, course.day, index))
-                if (is_course_free(course, index.cls))
-                {
-                    // print_plan(plan);
-                    // cout << course.name << endl;
-                    return true;
-                }
+    if (is_course_free(course, index.cls) &&
+        is_day_match(course.day, index.day) &&
+        is_time_match(course.time, index.period) &&
+        is_plan_not_full(plan, course.day, index))
+        return true;
     return false;
 }
 Class choose_course(Plan &plan, vector<Teacher> &teacherList,
@@ -235,13 +215,12 @@ Class choose_course(Plan &plan, vector<Teacher> &teacherList,
         return curr_cls;
 
     next_cls = choose_course(plan, teacherList, courseList, index, i + 1);
-    if (!is_valid_in_this_period(plan, courseList[i], index))
+    if (!is_course_valid(plan, courseList[i], index))
         return next_cls;
 
     Teacher teacher = choose_teacher(courseList[i], teacherList, index);
     if (teacher.name == EMPTY)
         return next_cls;
-
     if (courseList[i].name > next_cls.course_name && next_cls.course_name != EMPTY)
         return next_cls;
 
@@ -265,7 +244,9 @@ void make_teacher_time_full(Period &time, string day[2], int period)
     time[DAY.at(day[1])][period] = false;
 }
 void make_teacher_used_for_period(vector<Teacher> &teacherList,
-                                  string searched_teacher_name, Course chosen_course, Index index)
+                                  string searched_teacher_name,
+                                  Course chosen_course,
+                                  Index index)
 {
     for (Teacher &teacher : teacherList)
         if (searched_teacher_name == teacher.name)
@@ -277,23 +258,22 @@ void make_teacher_used_for_period(vector<Teacher> &teacherList,
                     return;
                 }
 }
+void make_class_full(string day[2], Plan plan, Index index)
+{
+    plan[index.cls][DAY.at(day[0])][index.period].is_full = true;
+    plan[index.cls][DAY.at(day[1])][index.period].is_full = true;
+}
 void make_used(vector<Teacher> &teacherList, vector<Course> &courseList, Plan &plan, Index index)
 {
     Course chosen_course = make_course_used(courseList, plan[index.cls][index.day][index.period].course_name, index.cls);
-    plan[index.cls][DAY.at(chosen_course.day[0])][index.period].is_full = true;
-    plan[index.cls][DAY.at(chosen_course.day[1])][index.period].is_full = true;
+    make_class_full(chosen_course.day, plan, index);
     make_teacher_used_for_period(teacherList, plan[index.cls][index.day][index.period].teacher_name, chosen_course, index);
 }
 void plan_each_class(Plan &plan, vector<Teacher> &teacherList, vector<Course> &courseList, Index index)
 {
     plan[index.cls][index.day][index.period] = choose_course(plan, teacherList, courseList, index);
-    if (/*plan[index.cls][index.day][index.period].course_name != EMPTY && */ plan[index.cls][index.day][index.period].teacher_name != EMPTY)
-    {
-        // plan[index.cls][index.day][index.period].is_full = true;
+    if (plan[index.cls][index.day][index.period].course_name != EMPTY)
         make_used(teacherList, courseList, plan, index);
-        // print_plan(plan); 
-    }
-    // return fit_course;
 }
 void plan_classes(vector<Teacher> &teacheList, vector<Course> &courseList, Plan &plan)
 {
@@ -301,9 +281,9 @@ void plan_classes(vector<Teacher> &teacheList, vector<Course> &courseList, Plan 
         for (int day = 0; day < DAY_CNT; day++)
             for (int period = 0; period < PERIOD_CNT; period++)
                 if (plan[clss][day][period].is_full == false)
-                    /*plan[clss][day][period] =*/plan_each_class(plan, teacheList, courseList, {clss, day, period});
+                    plan_each_class(plan, teacheList, courseList, {clss, day, period});
 }
-vector<string> sort_course(vector<Course> courseList)
+vector<string> sort_course_based_names(vector<Course> courseList)
 {
     vector<string> course_names;
     for (Course course : courseList)
@@ -346,7 +326,7 @@ void system()
     process_input(inputList, teacherList, courseList);
     Plan cls;
     plan_classes(teacherList, courseList, cls);
-    vector<string> sorted_courses_name = sort_course(courseList);
+    vector<string> sorted_courses_name = sort_course_based_names(courseList);
     output(cls, sorted_courses_name);
 }
 int main() { system(); }
