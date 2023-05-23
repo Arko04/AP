@@ -1,0 +1,125 @@
+OK
+OK
+OK
+DUPLICATE_MISSION_ID
+OK
+OK
+OK
+OK
+completed missions for driver 1:
+missions status for driver 1:
+mission 1:
+start timestamp: 100000
+end timestamp: -1
+reward: 20000
+status: ongoing
+OK
+OK
+completed missions for driver 1:
+missions status for driver 1:
+mission 3:
+start timestamp: 80000
+end timestamp: -1
+reward: 40000
+status: ongoing
+
+mission 2:
+start timestamp: 90000
+end timestamp: -1
+reward: 30000
+status: ongoing
+
+mission 1:
+start timestamp: 100000
+end timestamp: -1
+reward: 20000
+status: ongoing
+completed missions for driver 1:
+mission: 3
+start timestamp: 80000
+end timestamp: 101999
+reward: 40000
+
+mission: 2
+start timestamp: 90000
+end timestamp: 101999
+reward: 30000
+missions status for driver 1:
+mission 3:
+start timestamp: 80000
+end timestamp: 101999
+reward: 40000
+status: completed
+
+mission 2:
+start timestamp: 90000
+end timestamp: 101999
+reward: 30000
+status: completed
+
+mission 1:
+start timestamp: 100000
+end timestamp: -1
+reward: 20000
+status: ongoing
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+OK
+completed missions for driver 2:
+completed missions for driver 3:
+mission: 2
+start timestamp: 90000
+end timestamp: 101201
+reward: 30000
+completed missions for driver 2:
+missions status for driver 2:
+mission 2:
+start timestamp: 90000
+end timestamp: -1
+reward: 30000
+status: ongoing
+
+mission 1:
+start timestamp: 100000
+end timestamp: -1
+reward: 20000
+status: ongoing
+completed missions for driver 4:
+completed missions for driver 5:
+missions status for driver 3:
+mission 3:
+start timestamp: 80000
+end timestamp: -1
+reward: 40000
+status: ongoing
+
+mission 2:
+start timestamp: 90000
+end timestamp: 101201
+reward: 30000
+status: completed
+completed missions for driver 6:
+mission: 5
+start timestamp: 90000
+end timestamp: 101201
+reward: 45000
+missions status for driver 4:
+mission 3:
+start timestamp: 80000
+end timestamp: -1
+reward: 40000
+status: ongoing
+
+mission 4:
+start timestamp: 100000
+end timestamp: -1
+reward: 30000
+status: ongoing
+DUPLICATE_DRIVER_MISSION

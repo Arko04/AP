@@ -1,0 +1,37 @@
+OK
+OK
+OK
+MISSION_NOT_FOUND
+OK
+missions status for driver 1:
+mission 1:
+start timestamp: 2
+end timestamp: -1
+reward: 10
+status: ongoing
+OK
+OK
+completed missions for driver 1:
+completed missions for driver 1:
+mission: 2
+start timestamp: 3
+end timestamp: 100
+reward: 25
+missions status for driver 1:
+mission 1:
+start timestamp: 2
+end timestamp: -1
+reward: 10
+status: ongoing
+
+mission 2:
+start timestamp: 3
+end timestamp: 100
+reward: 25
+status: completed
+
+mission 3:
+start timestamp: 4
+end timestamp: -1
+reward: 35
+status: ongoing

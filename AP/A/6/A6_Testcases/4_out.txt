@@ -1,0 +1,72 @@
+OK
+OK
+OK
+OK
+completed missions for driver 1:
+completed missions for driver 1:
+completed missions for driver 1:
+MISSION_NOT_FOUND
+missions status for driver 1:
+mission 1:
+start timestamp: 25
+end timestamp: -1
+reward: 200
+status: ongoing
+completed missions for driver 1:
+missions status for driver 1:
+mission 1:
+start timestamp: 25
+end timestamp: -1
+reward: 200
+status: ongoing
+OK
+OK
+completed missions for driver 1:
+missions status for driver 1:
+mission 3:
+start timestamp: 10
+end timestamp: -1
+reward: 150
+status: ongoing
+
+mission 1:
+start timestamp: 25
+end timestamp: -1
+reward: 200
+status: ongoing
+
+mission 2:
+start timestamp: 40
+end timestamp: -1
+reward: 250
+status: ongoing
+completed missions for driver 1:
+mission: 3
+start timestamp: 10
+end timestamp: 60
+reward: 150
+
+mission: 2
+start timestamp: 40
+end timestamp: 60
+reward: 250
+missions status for driver 1:
+mission 3:
+start timestamp: 10
+end timestamp: 60
+reward: 150
+status: completed
+
+mission 1:
+start timestamp: 25
+end timestamp: -1
+reward: 200
+status: ongoing
+
+mission 2:
+start timestamp: 40
+end timestamp: 60
+reward: 250
+status: completed
+INVALID_ARGUMENTS
+INVALID_ARGUMENTS

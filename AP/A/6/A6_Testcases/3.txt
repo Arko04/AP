@@ -1,0 +1,36 @@
+add_time_mission 1 100000 120000 200 20000
+add_distance_mission 2 90000 130000 2000 30000
+add_count_mission 3 80000 140000 2 40000
+add_time_mission 3 100000 120000 200 20000
+add_time_mission 4 100000 120000 300 30000
+add_distance_mission 5 90000 130000 3000 45000
+add_count_mission 6 80000 140000 42 55000
+assign_mission 1 1
+record_ride 101000 101201 1 50
+show_missions_status 1
+assign_mission 2 1
+assign_mission 3 1
+record_ride 101300 101900 1 1001
+show_missions_status 1
+record_ride 101901 101999 1 1001
+show_missions_status 1
+assign_mission 1 2
+assign_mission 2 3
+assign_mission 3 4
+assign_mission 4 5
+assign_mission 5 6
+assign_mission 2 2
+assign_mission 3 3
+assign_mission 4 4
+assign_mission 5 5
+assign_mission 6 6
+record_ride 101000 102000 2 500
+record_ride 101000 101201 3 5000
+record_ride 102001 102500 2 50
+show_missions_status 2
+record_ride 101000 102000 4 500
+record_ride 101000 101201 5 600
+show_missions_status 3
+record_ride 101000 101201 6 3001
+show_missions_status 4
+assign_mission 1 1

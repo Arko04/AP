@@ -1,0 +1,14 @@
+add_time_mission 1 1680347116 1980349516 10000 200000
+add_distance_mission 3 1076347116 1580359516 250000 200000
+add_count_mission 2 1076347116 1690349516 3 200000
+assign_mission 1 1
+assign_mission 1 2
+assign_mission 2 1
+assign_mission 3 1
+record_ride 1680347116 1680347119 1 20000
+record_ride 1680347116 1691349516 1 20000
+show_missions_status 1
+record_ride 1680347116 1680349516 1 20000
+record_ride 1680347116 1680349516 1 20000
+show_missions_status 1
+show_missions_status 2

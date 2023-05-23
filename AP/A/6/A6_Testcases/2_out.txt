@@ -1,0 +1,37 @@
+INVALID_ARGUMENTS
+OK
+OK
+MISSION_NOT_FOUND
+OK
+DUPLICATE_DRIVER_MISSION
+OK
+completed missions for driver 1:
+missions status for driver 1:
+mission 3:
+start timestamp: 100000
+end timestamp: -1
+reward: 20000
+status: ongoing
+
+mission 2:
+start timestamp: 110000
+end timestamp: -1
+reward: 20000
+status: ongoing
+completed missions for driver 1:
+mission: 3
+start timestamp: 100000
+end timestamp: 110600
+reward: 20000
+missions status for driver 1:
+mission 3:
+start timestamp: 100000
+end timestamp: 110600
+reward: 20000
+status: completed
+
+mission 2:
+start timestamp: 110000
+end timestamp: -1
+reward: 20000
+status: ongoing

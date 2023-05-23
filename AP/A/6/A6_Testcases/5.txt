@@ -1,0 +1,11 @@
+add_time_mission 1 2 300 100 10
+add_distance_mission 2 3 200 100 25
+add_count_mission 3 4 1100 2 35
+assign_mission 4 1
+assign_mission 1 1
+show_missions_status 1
+assign_mission 2 1
+assign_mission 3 1
+record_ride 3 10 1 80
+record_ride 5 100 1 20
+show_missions_status 1

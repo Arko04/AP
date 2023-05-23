@@ -1,0 +1,10 @@
+add_time_mission 1 1000 999 10 200
+add_time_mission 1 1000 1001 -1 100
+add_time_mission 2 1000 1001 100 -1
+add_distance_mission 1 1000 999 10 200
+add_distance_mission 1 1000 1001 -1 100
+add_distance_mission 2 1000 1001 100 -1
+add_count_mission 1 1000 999 10 200
+add_count_mission 1 1000 1001 -1 100
+add_count_mission 2 1000 1001 100 -1
+assign_mission 1 1

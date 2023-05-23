@@ -1,0 +1,11 @@
+show_missions_status 9
+add_count_mission 3 1684281539 1684318968 -16 -2000
+assign_mission 3 0
+assign_mission 1 3
+add_distance_mission 0 1684295952 1684291586 29 1600
+assign_mission 7 7
+record_ride 1684316795 1684231776 9 1
+show_missions_status 7
+assign_mission 2 1
+show_missions_status 2
+add_count_mission 4 1684285894 1684281346 21 -3200
