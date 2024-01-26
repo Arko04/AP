@@ -1,7 +1,7 @@
-#include "MultiAnswer.hpp"
-#include "Const.hpp"
-#include "Utility.hpp"
-#include "Exception.hpp"
+#include "../inc/MultiAnswer.hpp"
+#include "../inc/Const.hpp"
+#include "../inc/Utility.hpp"
+#include "../inc/Exception.hpp"
 
 MultiAnswer::MultiAnswer(const QueryInfo &query_info) : Query(query_info)
 {

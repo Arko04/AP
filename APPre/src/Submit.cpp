@@ -1,6 +1,6 @@
-#include "Submit.hpp"
-#include "Const.hpp"
-#include "Exception.hpp"
+#include "../inc/Submit.hpp"
+#include "../inc/Const.hpp"
+#include "../inc/Exception.hpp"
 
 Submit::Submit(const int &query_no)
 {

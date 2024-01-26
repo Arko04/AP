@@ -1,9 +1,9 @@
-#include "Query.hpp"
-#include "Const.hpp"
-#include "SingleAnswer.hpp"
-#include "MultiAnswer.hpp"
-#include "ShortAnswer.hpp"
-#include "Exception.hpp"
+#include "../inc/Query.hpp"
+#include "../inc/Const.hpp"
+#include "../inc/SingleAnswer.hpp"
+#include "../inc/MultiAnswer.hpp"
+#include "../inc/ShortAnswer.hpp"
+#include "../inc/Exception.hpp"
 
 int Query::question_id = 1;
 

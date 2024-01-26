@@ -1,5 +1,5 @@
-#include "Utility.hpp"
-#include "Const.hpp"
+#include "../inc/Utility.hpp"
+#include "../inc/Const.hpp"
 #include <sstream>
 
 bool Utility::is_integer(const string token)

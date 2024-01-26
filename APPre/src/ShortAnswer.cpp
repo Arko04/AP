@@ -1,6 +1,6 @@
-#include "ShortAnswer.hpp"
-#include "Exception.hpp"
-#include "Const.hpp"
+#include "../inc/ShortAnswer.hpp"
+#include "../inc/Exception.hpp"
+#include "../inc/Const.hpp"
 
 ShortAnswer::ShortAnswer(const QueryInfo &query_info) : Query(query_info)
 {

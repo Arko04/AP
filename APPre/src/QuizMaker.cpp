@@ -1,6 +1,6 @@
-#include "QuizMaker.hpp"
-#include "QueryParser.hpp"
-#include "Const.hpp"
+#include "../inc/QuizMaker.hpp"
+#include "../inc/QueryParser.hpp"
+#include "../inc/Const.hpp"
 #include <fstream>
 #include <vector>
 

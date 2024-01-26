@@ -1,4 +1,4 @@
-#include "Exception.hpp"
+#include "../inc/Exception.hpp"
 
 Error::Error(const string &_ex)
 {

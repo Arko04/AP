@@ -1,6 +1,6 @@
-#include "QuizInterface.hpp"
-#include "Const.hpp"
-#include "Utility.hpp"
+#include "../inc/QuizInterface.hpp"
+#include "../inc/Const.hpp"
+#include "../inc/Utility.hpp"
 
 int main(int argc, char *argv[])
 {

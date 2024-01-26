@@ -1,7 +1,7 @@
-#include "SingleAnswer.hpp"
-#include "Const.hpp"
-#include "Utility.hpp"
-#include "Exception.hpp"
+#include "../inc/SingleAnswer.hpp"
+#include "../inc/Const.hpp"
+#include "../inc/Utility.hpp"
+#include "../inc/Exception.hpp"
 
 SingleAnswer::SingleAnswer(const QueryInfo &query_info) : Query(query_info)
 {

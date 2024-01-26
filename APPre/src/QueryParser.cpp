@@ -1,7 +1,7 @@
-#include "QueryParser.hpp"
-#include "Const.hpp"
-#include "Utility.hpp"
-#include "Exception.hpp"
+#include "../inc/QueryParser.hpp"
+#include "../inc/Const.hpp"
+#include "../inc/Utility.hpp"
+#include "../inc/Exception.hpp"
 #include <sstream>
 
 vector<string> QueryParser::normalize(vector<string> tokens)

@@ -1,8 +1,8 @@
-#include "QuizInterface.hpp"
-#include "QueryParser.hpp"
-#include "Utility.hpp"
-#include "Const.hpp"
-#include "Exception.hpp"
+#include "../inc/QuizInterface.hpp"
+#include "../inc/QueryParser.hpp"
+#include "../inc/Utility.hpp"
+#include "../inc/Const.hpp"
+#include "../inc/Exception.hpp"
 #include <cmath>
 #include <set>
 
