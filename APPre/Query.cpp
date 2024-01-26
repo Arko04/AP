@@ -3,6 +3,7 @@
 #include "SingleAnswer.hpp"
 #include "MultiAnswer.hpp"
 #include "ShortAnswer.hpp"
+#include "Exception.hpp"
 
 int Query::question_id = 1;
 
@@ -14,7 +15,7 @@ Query::Query(QueryInfo query_info)
     question_id++;
 }
 
-shared_ptr<Query> Query::create_query(QueryInfo query_info)
+shared_ptr<Query> Query::create_query(const QueryInfo &query_info)
 {
     if (query_info.question_type == SINGLE_ANSWER)
     {
@@ -30,12 +31,12 @@ shared_ptr<Query> Query::create_query(QueryInfo query_info)
     }
     else
     {
-        throw exception();
+        throw InvalidInput(COMMAND_NOT_FOUND);
     }
 }
 
 void Query::print_query()
 {
-    cout <<question_index<<STATE_DEL<< type << endl;
+    cout << question_index << STATE_DEL << type << endl;
     cout << question << endl;
 }

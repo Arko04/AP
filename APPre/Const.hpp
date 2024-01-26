@@ -1,6 +1,9 @@
 #ifndef _CONST_
 #define _CONST_
 
+#include <iostream>
+using namespace std;
+
 const char QUERY_DEL = '#';
 const char LINE_DEL = '\n';
 const char ANS_DEL = ' ';

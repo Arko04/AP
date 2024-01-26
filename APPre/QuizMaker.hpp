@@ -7,14 +7,13 @@
 class QuizMaker
 {
 private:
-    vector <shared_ptr<Query> > queries;
+    vector<shared_ptr<Query>> queries;
+
 public:
-    QuizMaker(string file_name);
+    QuizMaker(const string &file_name);
     int get_quiz_no();
-    vector<string> get_answer(const int query_index);
-    State is_answer_correct(const int query_index, vector<string> submitted_answer);
-    // void print_more_info(const int query_index);
+    vector<string> get_answer(const int &query_index);
+    State is_answer_correct(const int &query_index, const vector<string> &submitted_answer);
 };
 
 #endif
-

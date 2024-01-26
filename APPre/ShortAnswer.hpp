@@ -5,14 +5,14 @@
 
 class ShortAnswer : public Query
 {
-    private:
-        string answer;
-    public:
-    ShortAnswer(QueryInfo query_info);
+private:
+    string answer;
+
+public:
+    ShortAnswer(const QueryInfo &query_info);
+    State is_answer_correct(const vector<string> &submitted_answers);
     void print_query();
-    State is_answer_correct(const vector<string> submitted_answers);
     vector<string> get_answer();
-    // void print_more_info();
 };
 
 #endif

@@ -28,13 +28,7 @@ QueryInfo QueryParser::parse(string query)
     QueryInfo query_info;
     vector<string> tokens = tokenize(query);
 
-    for (int i = 0; i < tokens.size(); i++)
-    {
-        cout << tokens[i] << endl;
-        cout << tokens[i][tokens[i].size() - 1] << endl;
-    }
     string query_type = tokens[QUERY_TYPE_INDEX];
-
     if (query_type == SINGLE_ANSWER)
     {
         query_info = create_single_query_info(tokens);
@@ -68,16 +62,8 @@ vector<string> QueryParser::get_choices(vector<string> query)
 vector<string> QueryParser::get_answers(vector<string> query, const int choices_count)
 {
     int answer_index = CHOICES_COUNT_INDEX + choices_count + 1;
-    // stringstream answers_part(query[answer_index]);
-    // string answer;
     vector<string> answers = Utility::split_by(query[answer_index], ANS_DEL);
-    // int answers_count = 0;
-    // while(getline(answers_part, answer, ANS_DEL))
-    // {
 
-    //     answers.push_back(answer);
-    //     // answers_count++;
-    // }
     sort(answers.begin(), answers.end());
     return answers;
 }
@@ -104,7 +90,7 @@ QueryInfo QueryParser::create_non_short_query_info(vector<string> query)
 QueryInfo QueryParser::create_short_query_info(vector<string> query)
 {
     QueryInfo query_info = {.question_type = query[QUERY_TYPE_INDEX], .question = query[QUESTION_INDEX]};
-    ;
+
     query_info.answers.push_back(query[MULTI_ANSWER_INDEX]);
     return query_info;
 }

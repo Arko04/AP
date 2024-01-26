@@ -5,15 +5,15 @@
 
 class SingleAnswer : public Query
 {
-    private:
-        vector<string> choices;
-        string answer;
-    public:
-    SingleAnswer(QueryInfo query_info);
+private:
+    vector<string> choices;
+    string answer;
+
+public:
+    SingleAnswer(const QueryInfo &query_info);
+    State is_answer_correct(const vector<string> &submitted_answers);
     void print_query();
-    State is_answer_correct(const vector<string> submitted_answers);
     vector<string> get_answer();
-    // void print_more_info();
 };
 
 #endif
