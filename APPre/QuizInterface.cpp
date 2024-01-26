@@ -93,10 +93,6 @@ State QuizInterface::submit_answer(const vector<string> &tokens)
         throw InvalidInput(QUESTION_INDEX_IS_NOT_INTEGER);
     }
     const int query_no = stoi(tokens[QUESTION_INDEX]);
-    if (tokens.size() <= ANS_BEGINNING_INDEX)
-    {
-        throw NoInput(NO_INPUT_ANSWER);
-    }
     if (query_no > quiz->get_quiz_no())
     {
         throw OutOfQuery(OUT_OF_QUERY);
@@ -104,6 +100,10 @@ State QuizInterface::submit_answer(const vector<string> &tokens)
     if (submit->is_submitted(query_no))
     {
         throw DoubleAnswer(DOUBLE_ANSWER);
+    }
+    if (tokens.size() <= ANS_BEGINNING_INDEX)
+    {
+        throw NoInput(NO_INPUT_ANSWER);
     }
     set<string> submitted_ans(tokens.begin() + ANS_BEGINNING_INDEX, tokens.end());
     vector<string> submitted_answer(submitted_ans.begin(), submitted_ans.end());
