@@ -1,9 +1,9 @@
 #include "QueryParser.hpp"
 #include "Const.hpp"
-#include <iostream>
+#include "Utility.hpp"
+#include "Exception.hpp"
 #include <sstream>
-#include <vector>
-using namespace std;
+
 vector<string> QueryParser::normalize(vector<string> tokens)
 {
     for (int i = 0; i < tokens.size(); i++)
@@ -15,9 +15,10 @@ vector<string> QueryParser::normalize(vector<string> tokens)
     }
     return tokens;
 }
+
 vector<string> QueryParser::tokenize(string query)
 {
-    vector<string> tokens = split_by(query, LINE_DEL);
+    vector<string> tokens = Utility::split_by(query, LINE_DEL);
     tokens = normalize(tokens);
     return tokens;
 }
@@ -48,7 +49,7 @@ QueryInfo QueryParser::parse(string query)
     }
     else
     {
-        throw exception();
+        throw InvalidInput(COMMAND_NOT_FOUND);
     }
     return query_info;
 }
@@ -64,27 +65,12 @@ vector<string> QueryParser::get_choices(vector<string> query)
     return choices;
 }
 
-vector<string> QueryParser::split_by(string token, char del)
-{
-    stringstream input(token);
-    string part;
-    vector<string> tokens;
-    // int answers_count = 0;
-    while (getline(input, part, del))
-    {
-        if (part != EMPTY)
-        {
-            tokens.push_back(part);
-        }
-    }
-    return tokens;
-}
 vector<string> QueryParser::get_answers(vector<string> query, const int choices_count)
 {
     int answer_index = CHOICES_COUNT_INDEX + choices_count + 1;
     // stringstream answers_part(query[answer_index]);
     // string answer;
-    vector<string> answers = split_by(query[answer_index], ANS_DEL);
+    vector<string> answers = Utility::split_by(query[answer_index], ANS_DEL);
     // int answers_count = 0;
     // while(getline(answers_part, answer, ANS_DEL))
     // {

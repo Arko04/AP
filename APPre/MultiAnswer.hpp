@@ -1,3 +1,6 @@
+#ifndef _MUL_ANSWER_
+#define  _MUL_ANSWER_
+
 #include "Query.hpp"
 class MultiAnswer : public Query
 {
@@ -8,5 +11,8 @@ class MultiAnswer : public Query
     MultiAnswer(QueryInfo query_info);
     void print_query();
     State is_answer_correct(const vector<string> submitted_answers);
-    void print_more_info();
+    vector<string> get_answer();
+    // void print_more_info();
 };
+
+#endif

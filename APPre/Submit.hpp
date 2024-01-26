@@ -1,13 +1,16 @@
-#ifndef SUBMIT
-#define SUBMIT
+#ifndef _SUBMIT_
+#define _SUBMIT_
+
 #include <iostream>
 #include <vector>
 using namespace std;
+
 enum State{
     correct,
     wrong,
     no_answer,
 };
+
 class Submit
 {
 private:
@@ -17,6 +20,9 @@ public:
     Submit(const int query_no);
     void submit_answer(const int query_index, const State state, const vector<string> submitted_answer);
     State get_state(const int query_index);
-    void print_more_info(const int query_index);
+    // void print_more_info(const int query_index);
+    vector<string> get_answer(const int query_index);
+    bool is_submitted(const int query_index);
 };
+
 #endif

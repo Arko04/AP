@@ -1,10 +1,12 @@
-#ifndef QUERY
-#define QUERY
+#ifndef _QUERY_
+#define _QUERY_
+
 #include <iostream>
 #include <vector>
 #include <set>
 #include "Submit.hpp"
 using namespace std;
+
 struct QueryInfo
 {
     string question;
@@ -25,6 +27,7 @@ class Query{
         static shared_ptr<Query> create_query(QueryInfo query_info);
         virtual void print_query();
         virtual State is_answer_correct(const vector<string> submitted_answers) = 0;
-        virtual void print_more_info() = 0;
+        virtual vector<string> get_answer() = 0;
+        // virtual void print_more_info() = 0;
 };
 #endif

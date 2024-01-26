@@ -1,4 +1,8 @@
+#ifndef _SINGLE_ANSWER_
+#define _SINGLE_ANSWER_
+
 #include "Query.hpp"
+
 class SingleAnswer : public Query
 {
     private:
@@ -8,6 +12,8 @@ class SingleAnswer : public Query
     SingleAnswer(QueryInfo query_info);
     void print_query();
     State is_answer_correct(const vector<string> submitted_answers);
-    void print_more_info();
+    vector<string> get_answer();
+    // void print_more_info();
 };
 
+#endif

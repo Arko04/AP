@@ -36,6 +36,6 @@ shared_ptr<Query> Query::create_query(QueryInfo query_info)
 
 void Query::print_query()
 {
-    cout <<question_index<<". "<< type << endl;
+    cout <<question_index<<STATE_DEL<< type << endl;
     cout << question << endl;
 }

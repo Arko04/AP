@@ -37,7 +37,12 @@ State QuizMaker::is_answer_correct(const int query_index, vector<string> submitt
     return queries[query_index - 1]->is_answer_correct(submitted_answer);
 }
 
-void QuizMaker::print_more_info(const int query_index)
+// void QuizMaker::print_more_info(const int query_index)
+// {
+//     queries[query_index - 1]->print_more_info();
+// }
+
+vector<string> QuizMaker::get_answer(const int query_index)
 {
-    queries[query_index - 1]->print_more_info();
+    return queries[query_index - 1]->get_answer();
 }

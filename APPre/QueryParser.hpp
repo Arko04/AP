@@ -1,6 +1,11 @@
+#ifndef _QUERY_PARSER_
+#define _QUERY_PARSER_
+
 #include <iostream>
+#include <vector>
 #include "Query.hpp"
 using namespace std;
+
 class QueryParser
 {
     private:
@@ -16,6 +21,7 @@ class QueryParser
         vector<string> get_answers(vector<string> query, const int choices_count);
 
     public:
-        static vector<string> split_by(string answer, char del);
         QueryInfo parse(string query);
 };
+
+#endif
