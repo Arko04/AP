@@ -2,7 +2,7 @@
 #define _QUIZ_INTERFACE_
 
 #include <memory>
-#include "QuizMaker.hpp"
+#include "QueryMaker.hpp"
 #include "Submit.hpp"
 
 class QuizInterface

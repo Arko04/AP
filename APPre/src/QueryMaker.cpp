@@ -1,4 +1,4 @@
-#include "../inc/QuizMaker.hpp"
+#include "../inc/QueryMaker.hpp"
 #include "../inc/QueryParser.hpp"
 #include "../inc/Const.hpp"
 #include <fstream>
