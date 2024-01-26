@@ -3,6 +3,7 @@
 #include "../inc/Utility.hpp"
 #include "../inc/Const.hpp"
 #include "../inc/Exception.hpp"
+#include <memory>
 #include <cmath>
 #include <set>
 

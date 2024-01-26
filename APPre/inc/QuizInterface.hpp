@@ -1,6 +1,7 @@
 #ifndef _QUIZ_INTERFACE_
 #define _QUIZ_INTERFACE_
 
+#include <memory>
 #include "QuizMaker.hpp"
 #include "Submit.hpp"
 
@@ -20,8 +21,8 @@ public:
     QuizInterface(const string &inp_file);
     void get_answer(bool &finished);
     void handle_input();
-    State submit_answer(const vector<string> &tokens);
     void finish_exam();
+    State submit_answer(const vector<string> &tokens);
 };
 
 #endif
