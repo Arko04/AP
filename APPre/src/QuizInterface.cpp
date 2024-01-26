@@ -94,7 +94,7 @@ State QuizInterface::submit_answer(const vector<string> &tokens)
         throw InvalidInput(QUESTION_INDEX_IS_NOT_INTEGER);
     }
     const int query_no = stoi(tokens[QUESTION_INDEX]);
-    if (query_no > quiz->get_quiz_no())
+    if (query_no > quiz->get_quiz_no() || query_no < 1)
     {
         throw OutOfQuery(OUT_OF_QUERY);
     }

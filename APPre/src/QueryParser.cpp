@@ -3,6 +3,7 @@
 #include "../inc/Utility.hpp"
 #include "../inc/Exception.hpp"
 #include <sstream>
+#include <set>
 
 vector<string> QueryParser::normalize(vector<string> tokens)
 {
@@ -64,7 +65,8 @@ vector<string> QueryParser::get_answers(vector<string> query, const int choices_
     int answer_index = CHOICES_COUNT_INDEX + choices_count + 1;
     vector<string> answers = Utility::split_by(query[answer_index], ANS_DEL);
 
-    sort(answers.begin(), answers.end());
+    set<string> all_answer(answers.begin(), answers.end());
+    answers = vector<string>(all_answer.begin(), all_answer.end());
     return answers;
 }
 
@@ -80,7 +82,7 @@ QueryInfo QueryParser::create_multi_query_info(vector<string> query)
 
 QueryInfo QueryParser::create_non_short_query_info(vector<string> query)
 {
-    QueryInfo query_info = {.question_type = query[QUERY_TYPE_INDEX], .question = query[QUESTION_INDEX]};
+    QueryInfo query_info = {.question = query[QUESTION_INDEX], .question_type = query[QUERY_TYPE_INDEX]};
     int choices_count = stoi(query[CHOICES_COUNT_INDEX]);
     query_info.choices = get_choices(query);
     query_info.answers = get_answers(query, choices_count);
@@ -89,7 +91,7 @@ QueryInfo QueryParser::create_non_short_query_info(vector<string> query)
 
 QueryInfo QueryParser::create_short_query_info(vector<string> query)
 {
-    QueryInfo query_info = {.question_type = query[QUERY_TYPE_INDEX], .question = query[QUESTION_INDEX]};
+    QueryInfo query_info = {.question = query[QUESTION_INDEX], .question_type = query[QUERY_TYPE_INDEX]};
 
     query_info.answers.push_back(query[MULTI_ANSWER_INDEX]);
     return query_info;
